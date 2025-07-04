@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piss Zone - Image Slider</title>
+    <link rel="icon" type="image/x-icon" href="media/Favicon.png">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #FCFAEB;
+            color: black;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 80vh;
+            object-fit: cover;
+        }
+
+        .arrows {
+            display: flex;
+            justify-content: space-between;
+            width: 100px;
+            margin-top: 10px;
+        }
+
+        .arrow {
+            cursor: pointer;
+            font-size: 2rem;
+            user-select: none;
+        }
+
+       
+    </style>
+</head>
+<body>
+
+
+<figure class="slide">
+    <img id="sliderImage" src="media/IMG_3823.PNG" alt="">
+    <figcaption id="sliderCaption">Location: Greenpoint <br> Time: 6:40pm</figcaption>
+</figure>
+
+<div class="arrows">
+    <div class="arrow" onclick="prevSlide()">&#8592;</div>
+    <div class="arrow" onclick="nextSlide()">&#8594;</div>
+</div>
+
+<script>
+    const images = [
+    {src: 'media/IMG_3786.JPG', caption: '2:08am | Wed June 25'},
+    {src: 'media/IMG_3785.JPG', caption: '5:37pm | Wed June 25'},
+    {src: 'media/IMG_3822.JPG', caption: '6:39pm | Thu June 26'},
+    {
+  src: 'media/JPEG image-4160-B056-B7-0.jpeg', 
+  caption: 'Caption: Should prob hydrate more but like who cares yolo fml 🤯🤯🤯🤯 <br> 12:25am | Fri June 27'
+    },
+    {textOnly: true, caption: 'Caption: I ran out of piss photos <br> 7:52pm | Fri June 27'},  // Text-only slide
+
+    {src: 'media/JPEG image-448A-805C-7F-0.jpeg', caption: '9:37pm | Fri June 27'},
+    {src: 'media/JPEG image-4748-A05D-E6-0.jpeg', caption: '11:43pm | Fri June 27'},
+    {src: 'media/JPEG image-CBF3A15BB161-1.jpeg', caption: '7:48pm | Sat June 28'},
+    {src: 'media/JPEG image-4368-92CD-50-0.jpeg', caption: 'Caption: Pretty hydrated tonight <br> 12:27pm | Sun June 29'},
+    {src: 'media/JPEG image-45D0-B4AA-01-0.jpeg', caption: '7:27pm | Wed July 2'},
+    {src: 'media/JPEG image-4306-9C9D-27-0.jpeg', caption: '8:48pm | Thu July 3'},
+    {src: 'media/JPEG image-442E-9486-95-0.jpeg', caption: '9:03pm | Thu July 3'},
+    {src: 'media/JPEG image-4C59-AC82-DF-0.jpeg', caption: '12:36am | Fri July 4'},
+    {src: 'media/IMG_3823.png', caption: 'text a photo of your piss to 424-262-2009'},
+    ];
+
+    let currentSlide = 0;
+
+    function updateSlide() {
+        const imgEl = document.getElementById('sliderImage');
+        const captionEl = document.getElementById('sliderCaption');
+        const slide = images[currentSlide];
+
+        if (slide.textOnly) {
+            imgEl.style.display = 'none';         // hide image
+            captionEl.innerHTML = slide.caption;   // show text
+        } else {
+            imgEl.style.display = 'block';
+            imgEl.src = slide.src;                 // update image
+            captionEl.innerHTML = slide.caption;   // update caption
+        }
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide === 0)
+            ? images.length - 1
+            : currentSlide - 1;
+        updateSlide();
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide === images.length - 1)
+            ? 0
+            : currentSlide + 1;
+        updateSlide();
+    }
+
+    // Initialize the slider on page load
+    updateSlide();
+</script>
+
+</body>
+</html>
