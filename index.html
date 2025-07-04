@@ -6,40 +6,109 @@
     <title>Piss Zone - Image Slider</title>
     <link rel="icon" type="image/x-icon" href="media/Favicon.png">
     <style>
+        /* Base reset and layout */
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
-            overflow: hidden;
+            width: 100%;
+            min-height: 100%;
             background-color: #FCFAEB;
             color: black;
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
         }
+        h1 {
+            text-align: center;
+            margin: 10px 0;
+        }
 
+        /* Slider container fills remaining viewport on mobile */
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Fullscreen image */
         .slide img {
             width: 100%;
-            height: 80vh;
+            height: 100%;
             object-fit: cover;
+            display: block;
         }
 
+        /* Caption overlay on mobile */
+        .slide figcaption {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            color: black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        /* Navigation arrows on mobile */
         .arrows {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
             display: flex;
             justify-content: space-between;
-            width: 100px;
-            margin-top: 10px;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
-
         .arrow {
             cursor: pointer;
-            font-size: 2rem;
+            font-size: 2.5rem;
             user-select: none;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 50%;
         }
 
-       
+        /* Desktop adjustments */
+        @media (min-width: 768px) {
+            /* Let image take full height automatically */
+            .slider-wrapper {
+                flex: none;
+                height: auto;
+            }
+            .slide img {
+                height: auto;
+                max-height: 80vh;
+            }
+            /* Caption below image */
+            .slide figcaption {
+                position: static;
+                transform: none;
+                background: none;
+                padding: 10px 0;
+                margin-top: 5px;
+                color: black;
+            }
+            /* Arrows below slider as static elements */
+            .arrows {
+                position: static;
+                width: auto;
+                justify-content: center;
+                margin: 10px 0;
+                padding: 0;
+            }
+            .arrow {
+                margin: 0 15px;
+                background: none;
+                font-size: 2rem;
+                padding: 5px;
+            }
+        }
     </style>
 </head>
 <body>
