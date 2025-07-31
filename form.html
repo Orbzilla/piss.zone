@@ -1,1 +1,31 @@
 
+<form id="thoughtForm">
+  <h1>What are you thinking about?</h1>
+  <textarea name="thought" required></textarea>
+  <input type="hidden" name="location" id="locationField" />
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  document.getElementById("locationField").value = params.get("location") || "unknown";
+
+  document.getElementById("thoughtForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const thought = e.target.thought.value;
+    const location = e.target.location.value;
+
+    const res = await fetch("/api/addThought", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ thought, location }),
+    });
+
+    if (res.ok) {
+      alert("Thank you!");
+      e.target.reset();
+    } else {
+      alert("Error submitting.");
+    }
+  });
+</script>
