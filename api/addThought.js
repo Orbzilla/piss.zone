@@ -7,10 +7,10 @@ export default async function handler(req, res) {
   const TABLE_NAME = "Messages"; // Confirmed from your screenshot
   const API_KEY = process.env.AIRTABLE_API_KEY;
 
-  const { thought, location } = req.body;
+  const { Thought, Location } = req.body;
 
-  console.log("Incoming thought:", Thought);
-  console.log("Incoming location:", Location);
+  console.log("Incoming Thought:", Thought);
+  console.log("Incoming Location:", Location);
 
   try {
     const airtableRes = await fetch(
