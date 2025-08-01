@@ -23,8 +23,8 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify({
           fields: {
-            Thought: thought,   // ✅ maps to the “Thought” column in Airtable
-            Location: location, // ✅ maps to the “Location” column in Airtable
+            "THOUGHT": Thought,        // ✅ string key, matches Airtable field name
+            "LOCATION": Location,
           },
         }),
       }
