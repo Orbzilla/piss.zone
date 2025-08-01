@@ -9,8 +9,8 @@ export default async function handler(req, res) {
 
   const { thought, location } = req.body;
 
-  console.log("Incoming thought:", thought);
-  console.log("Incoming location:", location);
+  console.log("Incoming thought:", Thought);
+  console.log("Incoming location:", Location);
 
   try {
     const airtableRes = await fetch(
@@ -23,8 +23,8 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify({
           fields: {
-            Response: thought,
-            Location: location,
+            Response: Thought,
+            Location: Location,
           },
         }),
       }
