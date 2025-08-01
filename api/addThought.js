@@ -9,7 +9,6 @@ async function handler(req, res) {
   const TABLE_NAME = "Messages";
   const API_KEY = process.env.AIRTABLE_API_KEY;
 
-  // Destructure from request body
   const { thought, location } = req.body;
 
   console.log("Incoming Thought:", thought);
@@ -26,8 +25,8 @@ async function handler(req, res) {
         },
         body: JSON.stringify({
           fields: {
-            "Thought": thought,
-            "Location": location,
+            Thought: thought,
+            Location: location,
           },
         }),
       }
@@ -42,3 +41,9 @@ async function handler(req, res) {
       return res.status(airtableRes.status).json(data);
     }
   } catch (error) {
+    console.error("ERROR:", error);
+    return res.status(500).json({ error: error.message });
+  }
+}
+
+module.exports = handler;
