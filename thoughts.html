@@ -1,1 +1,16 @@
 
+<h1>What people are thinking:</h1>
+<div id="thoughts"></div>
+
+<script>
+  async function loadThoughts() {
+    const res = await fetch("/api/getThoughts");
+    const data = await res.json();
+
+    document.getElementById("thoughts").innerHTML = data
+      .map(entry => `<p><strong>${entry.fields.Location}</strong>: ${entry.fields.Response}</p>`)
+      .join("");
+  }
+
+  loadThoughts();
+</script>
