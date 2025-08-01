@@ -3,14 +3,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method Not Allowed" });
   }
 
-  // ✅ Replace this with your actual Airtable Base ID
-  const BASE_ID = "appAq22MEKHqrAWZ2";
-
-  // ✅ Replace this with your actual Airtable table name exactly as shown in Airtable
-  const TABLE_NAME = "Thoughts";
-
-  // ✅ Keep this from Vercel environment variable
-  const API_KEY = AIRTABLE_BASE_ID;
+  // ✅ These come from your Vercel Environment Variables
+  const BASE_ID = process.env.AIRTABLE_BASE_ID;
+  const TABLE_NAME = "Thoughts"; // change this if your Airtable tab says something else
+  const API_KEY = process.env.AIRTABLE_API_KEY;
 
   const { thought, location } = req.body;
 
