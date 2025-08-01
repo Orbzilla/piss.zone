@@ -4,13 +4,13 @@ export default async function handler(req, res) {
   }
 
   const BASE_ID = process.env.AIRTABLE_BASE_ID;
-  const TABLE_NAME = "Messages"; // renamed from Thoughts
+  const TABLE_NAME = "Messages"; // Confirmed from your screenshot
   const API_KEY = process.env.AIRTABLE_API_KEY;
 
   const { thought, location } = req.body;
 
-  console.log("Incoming thought:", Thought);
-  console.log("Incoming location:", Location);
+  console.log("Incoming thought:", thought);
+  console.log("Incoming location:", location);
 
   try {
     const airtableRes = await fetch(
@@ -23,8 +23,8 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify({
           fields: {
-            Response: Thought,
-            Location: Location,
+            Thought: thought,   // ✅ maps to the “Thought” column in Airtable
+            Location: location, // ✅ maps to the “Location” column in Airtable
           },
         }),
       }
