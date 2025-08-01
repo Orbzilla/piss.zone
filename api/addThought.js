@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   const TABLE_NAME = "Thoughts";
 
   // ✅ Keep this from Vercel environment variable
-  const API_KEY = process.env.AIRTABLE_API_KEY;
+  const API_KEY = AIRTABLE_BASE_ID;
 
   const { thought, location } = req.body;
 
