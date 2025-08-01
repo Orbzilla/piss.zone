@@ -1,8 +1,10 @@
+const fetch = require("node-fetch");
 
 async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method Not Allowed" });
   }
+
   const BASE_ID = process.env.AIRTABLE_BASE_ID;
   const TABLE_NAME = "Messages";
   const API_KEY = process.env.AIRTABLE_API_KEY;
