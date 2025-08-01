@@ -13,52 +13,20 @@
       background-color: #000;
       font-family: Arial, sans-serif;
       overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .slider-wrapper {
-      position: relative;
-      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #000;
-      flex-direction: column;
-    }
-
-    .slider-title {
-      position: absolute;
-      top: 20px;
-      width: 100%;
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: white;
-      text-shadow: 1px 1px 4px black;
-      z-index: 2;
-    }
-
-    .image-container {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      max-width: 100%;
-      max-height: 100%;
-      flex-grow: 1;
-    }
-
-    #sliderImage {
-      max-width: 100%;
-      max-height: 100vh;
-      object-fit: contain;
-      display: block;
+      gap: 60px; /* space between arrows and image */
     }
 
     .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
       font-size: 2.5rem;
       color: white;
       background: rgba(0, 0, 0, 0.5);
@@ -66,32 +34,27 @@
       padding: 10px;
       cursor: pointer;
       user-select: none;
-      z-index: 2;
+      flex-shrink: 0;
     }
 
-    .arrow.left {
-      left: 60px;
-    }
-
-    .arrow.right {
-      right: 60px;
+    #sliderImage {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      display: block;
     }
   </style>
 </head>
 <body>
 
 <div class="slider-wrapper">
-
-  <div class="image-container">
-    <img id="sliderImage" src="remnants/IMG_2121.JPG" alt="Slide Image" />
-    <div class="arrow left" onclick="prevSlide()">&#8592;</div>
-    <div class="arrow right" onclick="nextSlide()">&#8594;</div>
-  </div>
+  <div class="arrow" onclick="prevSlide()">&#8592;</div>
+  <img id="sliderImage" src="remnants/IMG_2121.JPG" alt="Slide Image" />
+  <div class="arrow" onclick="nextSlide()">&#8594;</div>
 </div>
 
 <script>
   const images = [
-
     { src: 'media/IMG_2340.JPG' },
     { src: 'media/IMG_3823.PNG' },
     { src: 'media/IMG_4815.jpg' },
@@ -123,7 +86,6 @@
     { src: 'media/IMG_5519.jpg' },
     { src: 'media/IMG_5598.jpg' },
     { src: 'media/IMG_5669.jpg' },
-    
   ];
 
   let currentSlide = 0;
