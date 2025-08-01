@@ -23,8 +23,8 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify({
           fields: {
-                "Thought": thought,
-                "Location": location,
+                "Thought": Thought,
+                "Location": Location,
           },
         }),
       }
